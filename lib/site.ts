@@ -44,6 +44,94 @@ export const skills: Skill[] = [
   { name: "Google Cloud", icon: "https://cdn.simpleicons.org/googlecloud/4285F4" },
 ];
 
+export const projectCategories = ["All", "Web", "Mobile", "AI", "Security"] as const;
+
+export type ProjectCategory = Exclude<(typeof projectCategories)[number], "All">;
+
+export const projects: {
+  title: string;
+  year: string;
+  categories: ProjectCategory[];
+  stack: string[];
+  summary: string;
+  repo: string;
+  live?: string;
+}[] = [
+  {
+    title: "SuperFx Agent",
+    year: "2026",
+    categories: ["Web", "AI"],
+    stack: ["Next.js", "FastAPI", "MetaTrader 5"],
+    summary:
+      "Multi-agent forex desk where Analyst, Strategist, Risk Manager, and Team Lead models debate a trade before anything is sent to MetaTrader 5.",
+    repo: "https://github.com/Bunkheang-heng/SuperFx-Agent",
+  },
+  {
+    title: "Gold Paper Trading",
+    year: "2026",
+    categories: ["Web"],
+    stack: ["Next.js", "FastAPI", "Docker"],
+    summary:
+      "Web XAUUSD terminal with its own order, position, and risk engine. Paper trades on live-style gold prices without MT4 or MT5.",
+    repo: "https://github.com/Bunkheang-heng/Trading-Plateform",
+  },
+  {
+    title: "Ben10 Fx",
+    year: "2026",
+    categories: ["Web"],
+    stack: ["Next.js", "Supabase", "Cloudflare R2"],
+    summary:
+      "Khmer forex community vault for books, indicators, signals, and expert advisors, with auth, file storage, and a live ticket board.",
+    repo: "https://github.com/Bunkheang-heng/Ben10-Fx",
+  },
+  {
+    title: "Baby Outlet",
+    year: "2026",
+    categories: ["Web"],
+    stack: ["Next.js", "Supabase"],
+    summary:
+      "Khmer baby-goods ordering platform with shop, warehouse, sales, and admin views on Next.js and Supabase.",
+    repo: "https://github.com/Bunkheang-heng/baby-outlet",
+  },
+  {
+    title: "ByteBuilders Club",
+    year: "2025",
+    categories: ["Web"],
+    stack: ["Next.js", "Firebase"],
+    summary:
+      "Club portal for attendance, events, teachers, and admin. Used as a working campus site, not a template.",
+    repo: "https://github.com/Bunkheang-heng/ClubProject",
+    live: "https://bytebuilder.vercel.app",
+  },
+  {
+    title: "Messenger Sales Agent",
+    year: "2025",
+    categories: ["Web", "AI"],
+    stack: ["TypeScript", "Supabase", "OpenAI"],
+    summary:
+      "Facebook Messenger sales bot that searches products with RAG, walks an order flow in chat, and writes customers and orders to Supabase.",
+    repo: "https://github.com/Bunkheang-heng/Facebook_Bot_Sales_Agent",
+  },
+  {
+    title: "Khmer Cuisine Hub",
+    year: "2024",
+    categories: ["Mobile", "AI"],
+    stack: ["Flutter", "Firebase", "Gemini"],
+    summary:
+      "Flutter app for Khmer recipes with Firebase auth, Firestore, video lessons, and a Gemini cooking assistant in English and Khmer.",
+    repo: "https://github.com/Bunkheang-heng/Khmer-Fodd",
+  },
+  {
+    title: "Phishing Detection",
+    year: "2024",
+    categories: ["Web", "Security"],
+    stack: ["Flask", "scikit-learn", "Google Cloud"],
+    summary:
+      "Inbox tool that pulls mail over IMAP and classifies phishing and spam with a model trained and served on Google Cloud.",
+    repo: "https://github.com/Bunkheang-heng/PhishingDetection",
+  },
+];
+
 export const certificateCategories = [
   "All",
   "Competitions",

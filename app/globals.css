@@ -489,3 +489,67 @@ body.askme-open .progress-wrap {
     height: min(540px, calc(100vh - 24px));
   }
 }
+
+.projects .project-card {
+  height: calc(100% - 30px);
+}
+
+.projects .project-card article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--maincolor);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.projects .project-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.projects .project-year {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.projects .project-cats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.projects .project-summary {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #ddd;
+}
+
+.projects .project-stack {
+  margin-bottom: 18px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.projects .project-links {
+  display: flex;
+  gap: 18px;
+  margin-top: auto;
+}
+
+.projects .project-links a {
+  color: var(--maincolor);
+  font-size: 13px;
+  text-decoration: underline;
+}

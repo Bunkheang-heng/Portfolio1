@@ -1,9 +1,15 @@
-import { certificates, site, skills } from "@/lib/site";
+import { certificates, projects, site, skills } from "@/lib/site";
 
 export function buildProfileContext() {
   const skillNames = skills.map((skill) => skill.name).join(", ");
   const certLines = certificates
     .map((cert) => `- ${cert.title} (${cert.category}, ${cert.issuer}, ${cert.date}): ${cert.description}`)
+    .join("\n");
+  const projectLines = projects
+    .map((project) => {
+      const live = project.live ? ` Live: ${project.live}.` : "";
+      return `- ${project.title} (${project.year}, ${project.categories.join("/")}): ${project.summary} Stack: ${project.stack.join(", ")}. Repo: ${project.repo}.${live}`;
+    })
     .join("\n");
 
   return [
@@ -18,6 +24,8 @@ export function buildProfileContext() {
     `GitHub: ${site.social.github}`,
     `LinkedIn: ${site.social.linkedin}`,
     `Skills: ${skillNames}`,
+    "Selected projects:",
+    projectLines,
     "Certificates:",
     certLines,
   ].join("\n");
@@ -43,6 +51,14 @@ export function answerFromProfile(question: string) {
   const text = question.toLowerCase();
   const skillNames = skills.map((skill) => skill.name).join(", ");
 
+  if (/(project|built|portfolio work|repos?|what did he build)/.test(text)) {
+    const highlights = projects
+      .slice(0, 4)
+      .map((project) => project.title)
+      .join(", ");
+    return `His selected GitHub work includes ${highlights}. You can browse the full set in the Projects section, with links to each repository.`;
+  }
+
   if (/(email|phone|contact|telegram|linkedin|github|reach|hire|available)/.test(text)) {
     return `${site.name} is ${site.availability.toLowerCase()}. You can reach him at ${site.email} or ${site.phone}. He is also on Telegram, GitHub, and LinkedIn from the links on this site.`;
   }
@@ -67,5 +83,5 @@ export function answerFromProfile(question: string) {
     return `${site.name} is a ${site.role} based in ${site.location}. He builds with JavaScript, React, Next.js, and backend tools, and he also has training in cloud and cybersecurity. He is ${site.availability.toLowerCase()}.`;
   }
 
-  return `${site.name} is a ${site.role} in ${site.location}, ${site.availability.toLowerCase()}. Ask about his skills, certificates, or how to contact him, and I will answer from his portfolio. For anything I do not have here, write him at ${site.email}.`;
+  return `${site.name} is a ${site.role} in ${site.location}, ${site.availability.toLowerCase()}. Ask about his skills, projects, certificates, or how to contact him, and I will answer from his portfolio. For anything I do not have here, write him at ${site.email}.`;
 }

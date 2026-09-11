@@ -10,6 +10,7 @@ import { Intro } from "@/components/Intro";
 import { Preloader } from "@/components/Preloader";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SiteNav } from "@/components/SiteNav";
+import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { TopBar } from "@/components/TopBar";
 import { AskMe } from "@/components/AskMe";
@@ -39,6 +40,7 @@ export function PortfolioApp() {
         <SiteNav open={navOpen} onNavigate={() => setNavOpen(false)} />
         <section className="in-box">
           <Skills />
+          <Projects />
           <Certificates />
           <Contact />
         </section>
